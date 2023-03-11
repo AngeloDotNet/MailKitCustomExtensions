@@ -55,8 +55,10 @@ public class InputMailSender
 ```
 
 
-## Usage example
+## Example of use in a web api controller
 ```csharp
+[ApiController]
+[Route("api/[controller]")]
 public class EmailController : ControllerBase
 {
   private readonly IEmailClient emailClient;
