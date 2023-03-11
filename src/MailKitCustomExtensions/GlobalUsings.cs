@@ -1,0 +1,10 @@
+﻿global using MailKit.Net.Smtp;
+global using MailKit.Security;
+global using MailKitCustomExtensions.Options;
+global using MailKitCustomExtensions.Services;
+global using Microsoft.AspNetCore.Identity.UI.Services;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Options;
+global using MimeKit;
+global using SerilogCustomExtensions.Service;
