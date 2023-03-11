@@ -43,17 +43,49 @@ public void ConfigureServices(IServiceCollection services)
 ```
 
 
-## Usage example
-
+## Example of the InputMailSender class
 ```csharp
-var result = await emailClient.SendEmailAsync(string recipientEmail, string replyToEmail, string subject, string htmlMessage);
-
-if (!result)
+public class InputMailSender
 {
-    return false;
+  public string RecipientEmail { get; set; }
+  public string ReplyToEmail { get; set; }
+  public string Subject { get; set; }
+  public string HtmlMessage { get; set; }
 }
+```
 
-return true;
+
+## Usage example
+```csharp
+public class EmailController : ControllerBase
+{
+  private readonly IEmailClient emailClient;
+
+  public EmailController(IEmailClient emailClient)
+  {
+    this.emailClient = emailClient;
+  }
+  
+  [HttpPost("InvioEmail")]
+  public async Task<IActionResult> InvioEmail([FromForm] InputMailSender model)
+  {
+      try
+      {
+        var result = await emailClient.SendEmailAsync(model.RecipientEmail, model.ReplyToEmail, model.Subject, model.HtmlMessage);
+        
+        if (!result)
+        {
+            return BadRequest();
+        }
+
+        return Ok();
+      }
+      catch
+      {
+          throw new Exception();
+      }
+  }
+}
 ```
 
 
