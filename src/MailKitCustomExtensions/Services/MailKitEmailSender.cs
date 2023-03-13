@@ -2,13 +2,13 @@
 
 public class MailKitEmailSender : IEmailClient
 {
+    private readonly ILoggerService loggerService;
     private readonly IOptionsMonitor<SmtpOptions> smtpOptionsMonitor;
-    private readonly IUtilService service;
 
-    public MailKitEmailSender(IOptionsMonitor<SmtpOptions> smtpOptionsMonitor, IUtilService service)
+    public MailKitEmailSender(ILoggerService loggerService, IOptionsMonitor<SmtpOptions> smtpOptionsMonitor)
     {
+        this.loggerService = loggerService;
         this.smtpOptionsMonitor = smtpOptionsMonitor;
-        this.service = service;
     }
 
     public Task SendEmailAsync(string email, string subject, string htmlMessage)
@@ -50,12 +50,12 @@ public class MailKitEmailSender : IEmailClient
             await client.SendAsync(message, token);
             await client.DisconnectAsync(true, token);
 
-            service.SaveLogInformation($"Message successfully sent to the email address {recipientEmail}");
+            loggerService.SaveLogInformation($"Message successfully sent to the email address {recipientEmail}");
             return true;
         }
         catch
         {
-            service.SaveLogError($"Couldn't send email to {recipientEmail} with message {htmlMessage}");
+            loggerService.SaveLogError($"Couldn't send email to {recipientEmail} with message {htmlMessage}");
             return false;
         }
     }
