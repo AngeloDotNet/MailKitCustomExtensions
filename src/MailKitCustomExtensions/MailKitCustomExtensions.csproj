@@ -9,10 +9,14 @@
 
     <PropertyGroup>
         <TargetFrameworks>net6.0</TargetFrameworks>
+        <Authors>Angelo Pirola</Authors>
+        <Product>.NET library mailkit send email custom extension</Product>
         <Description>mailkit custom extension send email library</Description>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/AngeloDotNet/MailKitCustomExtensions</PackageProjectUrl>
+        <PackageTags>csharp net6 mailkit send email custom extensions library</PackageTags>
         <RepositoryType>git</RepositoryType>
-        <RepositoryUrl>https://github.com/AngeloDotNet/MailKitCustomExtensions</RepositoryUrl>
+        <RepositoryUrl>https://github.com/AngeloDotNet/MailKitCustomExtensions.git</RepositoryUrl>
         <RepositoryBranch>main</RepositoryBranch>
         <PackageReadmeFile>README.md</PackageReadmeFile>
     </PropertyGroup>
