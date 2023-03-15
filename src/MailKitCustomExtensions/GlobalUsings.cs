@@ -7,4 +7,5 @@ global using Microsoft.Extensions.Configuration;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Options;
 global using MimeKit;
+global using SerilogCustomExtensions.Extensions;
 global using SerilogCustomExtensions.Service;
